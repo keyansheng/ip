@@ -15,6 +15,12 @@ public class RubberDuke {
                 mark(tasks, input.substring("mark ".length()));
             } else if (input.startsWith("unmark ")) {
                 unmark(tasks, input.substring("unmark ".length()));
+            } else if (input.startsWith("todo ")) {
+                addTodo(input.substring("todo ".length()), tasks);
+            } else if (input.startsWith("deadline ")) {
+                addDeadline(input.substring("deadline ".length()), tasks);
+            } else if (input.startsWith("event ")) {
+                addEvent(input.substring("event ".length()), tasks);
             } else {
                 addTodo(input, tasks);
             }
@@ -47,8 +53,39 @@ public class RubberDuke {
     }
 
     private static void addTodo(String description, List<Task> tasks) {
-        tasks.add(new Todo(description));
-        System.out.printf("added: %s%n", description);
+        add(new Todo(description), tasks);
+    }
+
+    private static void addDeadline(String argString, List<Task> tasks) {
+        try {
+            String[] args = argString.split("/by ", 2);
+            add(new Deadline(args[0], args[1]), tasks);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("""
+                    Oh quack! I don't know the deadline!
+                    Please specify /by followed by the deadline.""");
+        }
+    }
+
+    private static void addEvent(String argString, List<Task> tasks) {
+        try {
+            String[] argsFrom = argString.split("/from ", 2);
+            String[] argsTo = argsFrom[1].split("/to ", 2);
+            add(new Event(argsFrom[0], argsTo[0], argsTo[1]), tasks);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("""
+                    Oh quack! I don't know the start and/or end times!
+                    Please specify /from followed by the start time, followed by /to and the end time.""");
+        }
+    }
+
+    private static void add(Task task, List<Task> tasks) {
+        tasks.add(task);
+        System.out.printf("""
+                Quack. I've added this task:
+                %s
+                Now you have %d tasks in the list.
+                """, task, tasks.size());
     }
 
     private static void list(List<Task> tasks) {
