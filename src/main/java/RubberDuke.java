@@ -7,7 +7,8 @@ public class RubberDuke {
     private static void greet() {
         System.out.println("""
                 Quack! I'm Rubber Duke, your friendly neighbourhood rubber duck, here to help you with your debugging sessions.
-                What can I do for you?""");
+                What can I do for you?
+                """);
     }
 
     private static void farewell() {
