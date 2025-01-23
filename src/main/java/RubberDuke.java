@@ -1,10 +1,16 @@
 public class RubberDuke {
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
+        greet();
+        farewell();
+    }
+
+    private static void greet() {
+        System.out.println("""
+                Quack! I'm Rubber Duke, your friendly neighbourhood rubber duck, here to help you with your debugging sessions.
+                What can I do for you?""");
+    }
+
+    private static void farewell() {
+        System.out.println("Quack. Hope to see you again soon!");
     }
 }
