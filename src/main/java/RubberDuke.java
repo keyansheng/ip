@@ -12,10 +12,15 @@ public class RubberDuke {
             if (input.equals("list")) {
                 list(tasks);
             } else {
-                System.out.println(input);
+                add(input, tasks);
             }
         }
         farewell();
+    }
+
+    private static void add(String input, List<String> tasks) {
+        tasks.add(input);
+        System.out.printf("added: %s%n", input);
     }
 
     private static void list(List<String> tasks) {
