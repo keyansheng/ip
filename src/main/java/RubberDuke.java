@@ -47,7 +47,7 @@ public class RubberDuke {
     }
 
     private static void add(String input, List<Task> tasks) {
-        tasks.add(new Task(input));
+        tasks.add(new Todo(input));
         System.out.printf("added: %s%n", input);
     }
 
