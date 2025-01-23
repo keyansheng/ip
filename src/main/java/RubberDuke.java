@@ -12,19 +12,19 @@ public class RubberDuke {
             if (input.equals("list")) {
                 list(tasks);
             } else if (input.startsWith("mark ")) {
-                mark(tasks, input);
+                mark(tasks, input.substring("mark ".length()));
             } else if (input.startsWith("unmark ")) {
-                unmark(tasks, input);
+                unmark(tasks, input.substring("unmark ".length()));
             } else {
-                add(input, tasks);
+                addTodo(input, tasks);
             }
         }
         farewell();
     }
 
-    private static void mark(List<Task> tasks, String input) {
+    private static void mark(List<Task> tasks, String number) {
         try {
-            Task task = tasks.get(Integer.parseInt(input.split(" +")[1]) - 1);
+            Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
             task.mark();
             System.out.printf("Quack! I've marked this task as done:\n%s%n", task);
         } catch (NumberFormatException e) {
@@ -34,9 +34,9 @@ public class RubberDuke {
         }
     }
 
-    private static void unmark(List<Task> tasks, String input) {
+    private static void unmark(List<Task> tasks, String number) {
         try {
-            Task task = tasks.get(Integer.parseInt(input.split(" +")[1]) - 1);
+            Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
             task.unmark();
             System.out.printf("Quack, I've marked this task as not done yet:\n%s%n", task);
         } catch (NumberFormatException e) {
@@ -46,9 +46,9 @@ public class RubberDuke {
         }
     }
 
-    private static void add(String input, List<Task> tasks) {
-        tasks.add(new Todo(input));
-        System.out.printf("added: %s%n", input);
+    private static void addTodo(String description, List<Task> tasks) {
+        tasks.add(new Todo(description));
+        System.out.printf("added: %s%n", description);
     }
 
     private static void list(List<Task> tasks) {
