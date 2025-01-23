@@ -6,7 +6,7 @@ public class RubberDuke {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String input;
-        List<String> tasks = new ArrayList<>();
+        List<Task> tasks = new ArrayList<>();
         greet();
         while (!(input = prompt(scanner)).equals("bye")) {
             if (input.equals("list")) {
@@ -18,12 +18,12 @@ public class RubberDuke {
         farewell();
     }
 
-    private static void add(String input, List<String> tasks) {
-        tasks.add(input);
+    private static void add(String input, List<Task> tasks) {
+        tasks.add(new Task(input));
         System.out.printf("added: %s%n", input);
     }
 
-    private static void list(List<String> tasks) {
+    private static void list(List<Task> tasks) {
         for (int i = 0; i < tasks.size(); i++) {
             System.out.printf("%d. %s%n", i + 1, tasks.get(i));
         }
