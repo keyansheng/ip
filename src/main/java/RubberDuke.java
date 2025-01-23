@@ -1,14 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class RubberDuke {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String input;
+        List<String> tasks = new ArrayList<>();
         greet();
         while (!(input = prompt(scanner)).equals("bye")) {
-            System.out.println(input);
+            if (input.equals("list")) {
+                list(tasks);
+            } else {
+                System.out.println(input);
+            }
         }
         farewell();
+    }
+
+    private static void list(List<String> tasks) {
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.printf("%d. %s%n", i + 1, tasks.get(i));
+        }
     }
 
     private static void greet() {
