@@ -11,11 +11,39 @@ public class RubberDuke {
         while (!(input = prompt(scanner)).equals("bye")) {
             if (input.equals("list")) {
                 list(tasks);
+            } else if (input.startsWith("mark ")) {
+                mark(tasks, input);
+            } else if (input.startsWith("unmark ")) {
+                unmark(tasks, input);
             } else {
                 add(input, tasks);
             }
         }
         farewell();
+    }
+
+    private static void mark(List<Task> tasks, String input) {
+        try {
+            Task task = tasks.get(Integer.parseInt(input.split(" +")[1]) - 1);
+            task.mark();
+            System.out.printf("Quack! I've marked this task as done:\n%s%n", task);
+        } catch (NumberFormatException e) {
+            System.out.println("Oh quack! I can't read this number! Please specify the task number.");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Oh quack! I can't find this task! Please check the task number.");
+        }
+    }
+
+    private static void unmark(List<Task> tasks, String input) {
+        try {
+            Task task = tasks.get(Integer.parseInt(input.split(" +")[1]) - 1);
+            task.unmark();
+            System.out.printf("Quack, I've marked this task as not done yet:\n%s%n", task);
+        } catch (NumberFormatException e) {
+            System.out.println("Oh quack! I can't read this number! Please specify the task number.");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Oh quack! I can't find this task! Please check the task number.");
+        }
     }
 
     private static void add(String input, List<Task> tasks) {

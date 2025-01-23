@@ -6,6 +6,14 @@ public class Task {
         this.description = description;
     }
 
+    public void mark() {
+        isDone = true;
+    }
+
+    public void unmark() {
+        isDone = false;
+    }
+
     public String toString() {
         return "[%s] %s".formatted(isDone ? "X" : " ", description);
     }
