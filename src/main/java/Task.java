@@ -14,6 +14,7 @@ public class Task {
         isDone = false;
     }
 
+    @Override
     public String toString() {
         return "[%s] %s".formatted(isDone ? "X" : " ", description);
     }
