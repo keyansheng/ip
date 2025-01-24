@@ -16,4 +16,7 @@ list
 unknown command followed by empty command
 
 delete 2
+delete 1
+delete 1
+delete 1
 bye

@@ -39,4 +39,11 @@ Please specify /from followed by the start time, followed by /to and the end tim
 > Quack. I've removed this task:
 [D] [X] submit assignment (by: friday 4pm)
 Now you have 2 tasks in the list.
+> Quack. I've removed this task:
+[T] [ ] read instructions
+Now you have 1 task in the list.
+> Quack. I've removed this task:
+[E] [ ] attend lecture (from: friday 4pm to: friday 6pm)
+Now you have 0 tasks in the list.
+> Oh quack! I can't find this task! Please check the task number.
 > Quack. Hope to see you again soon!
