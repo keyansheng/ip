@@ -22,7 +22,11 @@ public class RubberDuke {
             } else if (input.startsWith("event ")) {
                 addEvent(input.substring("event ".length()), tasks);
             } else {
-                addTodo(input, tasks);
+                try {
+                    throw new UnknownCommandException();
+                } catch (UnknownCommandException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
         farewell();
