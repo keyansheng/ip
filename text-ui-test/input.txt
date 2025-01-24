@@ -1,0 +1,9 @@
+todo read instructions
+deadline submit assignment /by friday 4pm
+event attend lecture /from friday 4pm /to friday 6pm
+list
+mark 1
+mark 2
+unmark 1
+list
+bye

@@ -53,13 +53,13 @@ public class RubberDuke {
     }
 
     private static void addTodo(String description, List<Task> tasks) {
-        add(new Todo(description), tasks);
+        add(new Todo(description.strip()), tasks);
     }
 
     private static void addDeadline(String argString, List<Task> tasks) {
         try {
             String[] args = argString.split("/by ", 2);
-            add(new Deadline(args[0], args[1]), tasks);
+            add(new Deadline(args[0].strip(), args[1].strip()), tasks);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("""
                     Oh quack! I don't know the deadline!
@@ -71,7 +71,7 @@ public class RubberDuke {
         try {
             String[] argsFrom = argString.split("/from ", 2);
             String[] argsTo = argsFrom[1].split("/to ", 2);
-            add(new Event(argsFrom[0], argsTo[0], argsTo[1]), tasks);
+            add(new Event(argsFrom[0].strip(), argsTo[0].strip(), argsTo[1].strip()), tasks);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("""
                     Oh quack! I don't know the start and/or end times!
@@ -84,8 +84,8 @@ public class RubberDuke {
         System.out.printf("""
                 Quack. I've added this task:
                 %s
-                Now you have %d tasks in the list.
-                """, task, tasks.size());
+                Now you have %d task%s in the list.
+                """, task, tasks.size(), tasks.size() == 1 ? "" : "s");
     }
 
     private static void list(List<Task> tasks) {
