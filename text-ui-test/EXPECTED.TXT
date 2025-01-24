@@ -9,6 +9,12 @@ Now you have 2 tasks in the list.
 > Quack. I've added this task:
 [E] [ ] attend lecture (from: friday 4pm to: friday 6pm)
 Now you have 3 tasks in the list.
+> Oh quack! I don't know the deadline!
+Please specify /by followed by the deadline.
+> Oh quack! I don't know the start and/or end times!
+Please specify /from followed by the start time, followed by /to and the end time.
+> Oh quack! I don't know the start and/or end times!
+Please specify /from followed by the start time, followed by /to and the end time.
 > Here are your tasks. Let's get quacking!
 1. [T] [ ] read instructions
 2. [D] [ ] submit assignment (by: friday 4pm)
@@ -17,8 +23,10 @@ Now you have 3 tasks in the list.
 [T] [X] read instructions
 > Quack! I've marked this task as done:
 [D] [X] submit assignment (by: friday 4pm)
+> Oh quack! I can't find this task! Please check the task number.
 > Quack, I've marked this task as not done yet:
 [T] [ ] read instructions
+> Oh quack! I can't read this number! Please specify the task number.
 > Here are your tasks. Let's get quacking!
 1. [T] [ ] read instructions
 2. [D] [X] submit assignment (by: friday 4pm)

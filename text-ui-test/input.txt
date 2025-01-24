@@ -1,9 +1,14 @@
 todo read instructions
 deadline submit assignment /by friday 4pm
 event attend lecture /from friday 4pm /to friday 6pm
+deadline without deadline
+event without start or end
+event in the wrong order /to end /from start
 list
 mark 1
 mark 2
+mark 4
 unmark 1
+unmark two
 list
 bye
