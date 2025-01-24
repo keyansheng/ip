@@ -53,13 +53,19 @@ public class RubberDuke {
     }
 
     private static void addTodo(String description, List<Task> tasks) {
-        add(new Todo(description.strip()), tasks);
+        try {
+            add(new Todo(description), tasks);
+        } catch (EmptyArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void addDeadline(String argString, List<Task> tasks) {
         try {
             String[] args = argString.split("/by ", 2);
-            add(new Deadline(args[0].strip(), args[1].strip()), tasks);
+            add(new Deadline(args[0], args[1]), tasks);
+        } catch (EmptyArgumentException e) {
+            System.out.println(e.getMessage());
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("""
                     Oh quack! I don't know the deadline!
@@ -71,7 +77,9 @@ public class RubberDuke {
         try {
             String[] argsFrom = argString.split("/from ", 2);
             String[] argsTo = argsFrom[1].split("/to ", 2);
-            add(new Event(argsFrom[0].strip(), argsTo[0].strip(), argsTo[1].strip()), tasks);
+            add(new Event(argsFrom[0], argsTo[0], argsTo[1]), tasks);
+        } catch (EmptyArgumentException e) {
+            System.out.println(e.getMessage());
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("""
                     Oh quack! I don't know the start and/or end times!
