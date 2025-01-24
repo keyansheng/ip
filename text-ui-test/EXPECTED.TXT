@@ -13,6 +13,9 @@ Now you have 3 tasks in the list.
 Please specify /by followed by the deadline.
 > Oh quack! I don't know the start and/or end times!
 Please specify /from followed by the start time, followed by /to and the end time.
+> Quack! I don't know what this task is about!
+> Oh quack! I don't know the start and/or end times!
+Please specify /from followed by the start time, followed by /to and the end time.
 > Oh quack! I don't know the start and/or end times!
 Please specify /from followed by the start time, followed by /to and the end time.
 > Here are your tasks. Let's get quacking!
