@@ -15,6 +15,8 @@ public class RubberDuke {
                 mark(tasks, input.substring("mark ".length()));
             } else if (input.startsWith("unmark ")) {
                 unmark(tasks, input.substring("unmark ".length()));
+            } else if (input.startsWith("delete ")) {
+                delete(tasks, input.substring("delete ".length()));
             } else if (input.startsWith("todo ")) {
                 addTodo(input.substring("todo ".length()), tasks);
             } else if (input.startsWith("deadline ")) {
@@ -49,6 +51,21 @@ public class RubberDuke {
             Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
             task.unmark();
             System.out.printf("Quack, I've marked this task as not done yet:\n%s%n", task);
+        } catch (NumberFormatException e) {
+            System.out.println("Oh quack! I can't read this number! Please specify the task number.");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Oh quack! I can't find this task! Please check the task number.");
+        }
+    }
+
+    private static void delete(List<Task> tasks, String number) {
+        try {
+            Task task = tasks.remove(Integer.parseInt(number.strip()) - 1);
+            System.out.printf("""
+                    Quack. I've removed this task:
+                    %s
+                    Now you have %d task%s in the list.
+                    """, task, tasks.size(), tasks.size() == 1 ? "" : "s");
         } catch (NumberFormatException e) {
             System.out.println("Oh quack! I can't read this number! Please specify the task number.");
         } catch (IndexOutOfBoundsException e) {
