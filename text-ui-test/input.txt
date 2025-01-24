@@ -13,4 +13,6 @@ mark 4
 unmark 1
 unmark two
 list
+unknown command followed by empty command
+
 bye

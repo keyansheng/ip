@@ -34,4 +34,6 @@ Please specify /from followed by the start time, followed by /to and the end tim
 1. [T] [ ] read instructions
 2. [D] [X] submit assignment (by: friday 4pm)
 3. [E] [ ] attend lecture (from: friday 4pm to: friday 6pm)
+> Quack! I don't know what you're talking about!
+> Quack! I don't know what you're talking about!
 > Quack. Hope to see you again soon!
