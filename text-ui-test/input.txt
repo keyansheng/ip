@@ -1,3 +1,5 @@
+list
+delete 1
 todo read instructions
 deadline submit assignment /by friday 4pm
 event attend lecture /from friday 4pm /to friday 6pm
@@ -19,4 +21,6 @@ delete 2
 delete 1
 delete 1
 delete 1
+event check loading /from and saving /to file
+mark 1
 bye
