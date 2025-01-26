@@ -1,15 +1,51 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class RubberDuke {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String input;
+        File file = new File("./data/tasks.txt");
+        File directory = file.getParentFile();
+        Scanner fileScanner;
+        try {
+            if(!directory.exists()) {
+                directory.mkdirs();
+            }
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            fileScanner = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            System.out.printf("Oh quack! I can't find the tasks file! Is there a file at %s?%n", file.getPath());
+            return;
+        } catch (IOException e) {
+            System.out.printf("Oh quack! I can't create the tasks file! Is %s writable?%n", file.getParent());
+            return;
+        }
         List<Task> tasks = new ArrayList<>();
+        while (fileScanner.hasNextLine()) {
+            String input = fileScanner.nextLine();
+            if (input.startsWith("mark ")) {
+                mark(tasks, input.substring("mark ".length()));
+            } else if (input.startsWith("todo ")) {
+                addTodo(input.substring("todo ".length()), tasks);
+            } else if (input.startsWith("deadline ")) {
+                addDeadline(input.substring("deadline ".length()), tasks);
+            } else if (input.startsWith("event ")) {
+                addEvent(input.substring("event ".length()), tasks);
+            }
+        }
+        Scanner scanner = new Scanner(System.in);
         greet();
-        while (!(input = prompt(scanner)).equals("bye")) {
-            if (input.equals("list")) {
+        prompt();
+        while (scanner.hasNextLine()) {
+            String input = scanner.nextLine();
+            if (input.equals("bye")) {
+                break;
+            } else if (input.equals("list")) {
                 System.out.println(list(tasks));
             } else if (input.startsWith("mark ")) {
                 System.out.println(mark(tasks, input.substring("mark ".length())));
@@ -30,6 +66,7 @@ public class RubberDuke {
                     System.out.println(e.getMessage());
                 }
             }
+            prompt();
         }
         farewell();
     }
@@ -156,8 +193,7 @@ public class RubberDuke {
         System.out.println("Quack. Hope to see you again soon!");
     }
 
-    private static String prompt(Scanner scanner) {
+    private static void prompt() {
         System.out.print("> ");
-        return scanner.nextLine();
     }
 }
