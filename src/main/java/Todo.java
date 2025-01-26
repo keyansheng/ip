@@ -4,6 +4,11 @@ public class Todo extends Task {
     }
 
     @Override
+    public String getCreateCommand() {
+        return "todo %s".formatted(super.getCreateCommand());
+    }
+
+    @Override
     public String toString() {
         return "[T] %s".formatted(super.toString());
     }

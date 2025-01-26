@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +76,26 @@ public class RubberDuke {
                 }
             }
             System.out.print(PROMPT);
+        }
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < tasks.size(); i++) {
+            Task task = tasks.get(i);
+            output.append(task.getCreateCommand()).append("\n");
+            if (task.isDone()) {
+                output.append("mark ").append(i + 1).append("\n");
+            }
+        }
+        try {
+            FileWriter fileWriter = new FileWriter(FILE_PATH);
+            fileWriter.write(output.toString());
+            fileWriter.close();
+        } catch (IOException e) {
+            System.out.printf("""
+                    Oh quack! I can't write to the tasks file! Is %s writable?
+                    Please save the following commands and enter them next time.
+                    """, file.getParent());
+            System.out.print(output);
+            return;
         }
         System.out.println(FAREWELL);
     }
