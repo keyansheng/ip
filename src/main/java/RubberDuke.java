@@ -14,7 +14,7 @@ public class RubberDuke {
     private static final String PROMPT = "> ";
     private TaskList taskList = new TaskList();
 
-    public RubberDuke() {
+    private RubberDuke() {
         File file = new File(FILE_PATH);
         File directory = file.getParentFile();
         Scanner fileScanner;
