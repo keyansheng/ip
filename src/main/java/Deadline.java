@@ -1,3 +1,8 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.FormatStyle;
+
 public class Deadline extends Task {
     private String by;
 
@@ -16,6 +21,12 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
+        String by;
+        try {
+            by = LocalDateTime.parse(this.by).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+        } catch (DateTimeParseException e) {
+            by = this.by;
+        }
         return "[D] %s (by: %s)".formatted(super.toString(), by);
     }
 }

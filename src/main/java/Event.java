@@ -1,3 +1,8 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.FormatStyle;
+
 public class Event extends Task {
     private String from;
     private String to;
@@ -21,6 +26,18 @@ public class Event extends Task {
 
     @Override
     public String toString() {
+        String from;
+        try {
+            from = LocalDateTime.parse(this.from).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+        } catch (DateTimeParseException e) {
+            from = this.from;
+        }
+        String to;
+        try {
+            to = LocalDateTime.parse(this.to).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+        } catch (DateTimeParseException e) {
+            to = this.to;
+        }
         return "[E] %s (from: %s to: %s)".formatted(super.toString(), from, to);
     }
 }
