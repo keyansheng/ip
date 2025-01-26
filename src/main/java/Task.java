@@ -9,12 +9,20 @@ public abstract class Task {
         this.description = description;
     }
 
+    public boolean isDone() {
+        return isDone;
+    }
+
     public void mark() {
         isDone = true;
     }
 
     public void unmark() {
         isDone = false;
+    }
+
+    public String getCreateCommand() {
+        return description;
     }
 
     @Override

@@ -15,6 +15,11 @@ public class Event extends Task {
     }
 
     @Override
+    public String getCreateCommand() {
+        return "event %s /from %s /to %s".formatted(super.getCreateCommand(), from, to);
+    }
+
+    @Override
     public String toString() {
         return "[E] %s (from: %s to: %s)".formatted(super.toString(), from, to);
     }

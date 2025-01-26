@@ -10,6 +10,11 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String getCreateCommand() {
+        return "deadline %s /by %s".formatted(super.getCreateCommand(), by);
+    }
+
+    @Override
     public String toString() {
         return "[D] %s (by: %s)".formatted(super.toString(), by);
     }
