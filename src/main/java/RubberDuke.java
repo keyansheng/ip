@@ -14,6 +14,7 @@ public class RubberDuke {
             What can I do for you?""";
     private static final String FAREWELL = "Quack. Hope to see you again soon!";
     private static final String PROMPT = "> ";
+    private List<Task> tasks = new ArrayList<>();
 
     public RubberDuke() {
         File file = new File(FILE_PATH);
@@ -34,7 +35,6 @@ public class RubberDuke {
             System.out.printf("Oh quack! I can't create the tasks file! Is %s writable?%n", file.getParent());
             return;
         }
-        List<Task> tasks = new ArrayList<>();
         while (fileScanner.hasNextLine()) {
             String input = fileScanner.nextLine();
             if (input.startsWith("mark ")) {
