@@ -6,12 +6,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RubberDuke {
+    private static final String FILE_PATH = "./data/tasks.txt";
+    private static final String GREETING = """
+            Quack! \
+            I'm Rubber Duke, your friendly neighbourhood rubber duck, here to help you with your debugging sessions.
+            What can I do for you?""";
+    private static final String FAREWELL = "Quack. Hope to see you again soon!";
+    private static final String PROMPT = "> ";
+
     public static void main(String[] args) {
-        File file = new File("./data/tasks.txt");
+        File file = new File(FILE_PATH);
         File directory = file.getParentFile();
         Scanner fileScanner;
         try {
-            if(!directory.exists()) {
+            if (!directory.exists()) {
                 directory.mkdirs();
             }
             if (!file.exists()) {
@@ -38,9 +46,9 @@ public class RubberDuke {
                 addEvent(input.substring("event ".length()), tasks);
             }
         }
+        System.out.println(GREETING);
+        System.out.print(PROMPT);
         Scanner scanner = new Scanner(System.in);
-        greet();
-        prompt();
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
             if (input.equals("bye")) {
@@ -66,9 +74,9 @@ public class RubberDuke {
                     System.out.println(e.getMessage());
                 }
             }
-            prompt();
+            System.out.print(PROMPT);
         }
-        farewell();
+        System.out.println(FAREWELL);
     }
 
     private static String mark(List<Task> tasks, String number) {
@@ -179,21 +187,5 @@ public class RubberDuke {
             output.append("\n").append(i + 1).append(". ").append(tasks.get(i));
         }
         return output.toString();
-    }
-
-    private static void greet() {
-        System.out.println("""
-                Quack! \
-                I'm Rubber Duke, your friendly neighbourhood rubber duck, \
-                here to help you with your debugging sessions.
-                What can I do for you?""");
-    }
-
-    private static void farewell() {
-        System.out.println("Quack. Hope to see you again soon!");
-    }
-
-    private static void prompt() {
-        System.out.print("> ");
     }
 }
