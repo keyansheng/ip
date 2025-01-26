@@ -2,8 +2,20 @@ Quack! I'm Rubber Duke, your friendly neighbourhood rubber duck, here to help yo
 What can I do for you?
 > Here are your tasks. Let's get quacking!
 1. [E] [X] check loading (from: and saving to: file)
+2. [D] [ ] unparseable (by: 2025-01-26T15)
+3. [D] [ ] parseable (by: Jan 26, 2025, 3:30:00 PM)
+4. [E] [ ] partially parseable (from: 2025-01-26T15 to: Jan 26, 2025, 3:30:00 PM)
 > Quack. I've removed this task:
 [E] [X] check loading (from: and saving to: file)
+Now you have 3 tasks in the list.
+> Quack. I've removed this task:
+[D] [ ] unparseable (by: 2025-01-26T15)
+Now you have 2 tasks in the list.
+> Quack. I've removed this task:
+[D] [ ] parseable (by: Jan 26, 2025, 3:30:00 PM)
+Now you have 1 task in the list.
+> Quack. I've removed this task:
+[E] [ ] partially parseable (from: 2025-01-26T15 to: Jan 26, 2025, 3:30:00 PM)
 Now you have 0 tasks in the list.
 > Quack. I've added this task:
 [T] [ ] read instructions
@@ -56,4 +68,13 @@ Now you have 0 tasks in the list.
 Now you have 1 task in the list.
 > Quack! I've marked this task as done:
 [E] [X] check loading (from: and saving to: file)
+> Quack. I've added this task:
+[D] [ ] unparseable (by: 2025-01-26T15)
+Now you have 2 tasks in the list.
+> Quack. I've added this task:
+[D] [ ] parseable (by: Jan 26, 2025, 3:30:00 PM)
+Now you have 3 tasks in the list.
+> Quack. I've added this task:
+[E] [ ] partially parseable (from: 2025-01-26T15 to: Jan 26, 2025, 3:30:00 PM)
+Now you have 4 tasks in the list.
 > Quack. Hope to see you again soon!

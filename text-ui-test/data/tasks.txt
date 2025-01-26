@@ -1,2 +1,5 @@
 event check loading /from and saving /to file
 mark 1
+deadline unparseable /by 2025-01-26T15
+deadline parseable /by 2025-01-26T15:30
+event partially parseable /from 2025-01-26T15 /to 2025-01-26T15:30
