@@ -15,7 +15,7 @@ public class RubberDuke {
     private static final String FAREWELL = "Quack. Hope to see you again soon!";
     private static final String PROMPT = "> ";
 
-    public static void main(String[] args) {
+    public RubberDuke() {
         File file = new File(FILE_PATH);
         File directory = file.getParentFile();
         Scanner fileScanner;
@@ -100,7 +100,7 @@ public class RubberDuke {
         System.out.println(FAREWELL);
     }
 
-    private static String mark(List<Task> tasks, String number) {
+    private String mark(List<Task> tasks, String number) {
         StringBuilder output = new StringBuilder();
         try {
             Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
@@ -114,7 +114,7 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private static String unmark(List<Task> tasks, String number) {
+    private String unmark(List<Task> tasks, String number) {
         StringBuilder output = new StringBuilder();
         try {
             Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
@@ -128,7 +128,7 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private static String delete(List<Task> tasks, String number) {
+    private String delete(List<Task> tasks, String number) {
         StringBuilder output = new StringBuilder();
         try {
             Task task = tasks.remove(Integer.parseInt(number.strip()) - 1);
@@ -148,7 +148,7 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private static String addTodo(String description, List<Task> tasks) {
+    private String addTodo(String description, List<Task> tasks) {
         StringBuilder output = new StringBuilder();
         try {
             output.append(add(new Todo(description), tasks));
@@ -158,7 +158,7 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private static String addDeadline(String argString, List<Task> tasks) {
+    private String addDeadline(String argString, List<Task> tasks) {
         StringBuilder output = new StringBuilder();
         try {
             String[] args = argString.split("/by ", 2);
@@ -173,7 +173,7 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private static String addEvent(String argString, List<Task> tasks) {
+    private String addEvent(String argString, List<Task> tasks) {
         StringBuilder output = new StringBuilder();
         try {
             String[] argsFrom = argString.split("/from ", 2);
@@ -189,7 +189,7 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private static String add(Task task, List<Task> tasks) {
+    private String add(Task task, List<Task> tasks) {
         tasks.add(task);
         return new StringBuilder()
                 .append("Quack. I've added this task:\n")
@@ -202,11 +202,15 @@ public class RubberDuke {
                 .toString();
     }
 
-    private static String list(List<Task> tasks) {
+    private String list(List<Task> tasks) {
         StringBuilder output = new StringBuilder().append("Here are your tasks. Let's get quacking!");
         for (int i = 0; i < tasks.size(); i++) {
             output.append("\n").append(i + 1).append(". ").append(tasks.get(i));
         }
         return output.toString();
+    }
+
+    public static void main(String[] args) {
+        new RubberDuke();
     }
 }
