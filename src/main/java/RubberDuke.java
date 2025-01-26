@@ -38,13 +38,13 @@ public class RubberDuke {
         while (fileScanner.hasNextLine()) {
             String input = fileScanner.nextLine();
             if (input.startsWith("mark ")) {
-                mark(tasks, input.substring("mark ".length()));
+                mark(input.substring("mark ".length()));
             } else if (input.startsWith("todo ")) {
-                addTodo(input.substring("todo ".length()), tasks);
+                addTodo(input.substring("todo ".length()));
             } else if (input.startsWith("deadline ")) {
-                addDeadline(input.substring("deadline ".length()), tasks);
+                addDeadline(input.substring("deadline ".length()));
             } else if (input.startsWith("event ")) {
-                addEvent(input.substring("event ".length()), tasks);
+                addEvent(input.substring("event ".length()));
             }
         }
         System.out.println(GREETING);
@@ -55,19 +55,19 @@ public class RubberDuke {
             if (input.equals("bye")) {
                 break;
             } else if (input.equals("list")) {
-                System.out.println(list(tasks));
+                System.out.println(list());
             } else if (input.startsWith("mark ")) {
-                System.out.println(mark(tasks, input.substring("mark ".length())));
+                System.out.println(mark(input.substring("mark ".length())));
             } else if (input.startsWith("unmark ")) {
-                System.out.println(unmark(tasks, input.substring("unmark ".length())));
+                System.out.println(unmark(input.substring("unmark ".length())));
             } else if (input.startsWith("delete ")) {
-                System.out.println(delete(tasks, input.substring("delete ".length())));
+                System.out.println(delete(input.substring("delete ".length())));
             } else if (input.startsWith("todo ")) {
-                System.out.println(addTodo(input.substring("todo ".length()), tasks));
+                System.out.println(addTodo(input.substring("todo ".length())));
             } else if (input.startsWith("deadline ")) {
-                System.out.println(addDeadline(input.substring("deadline ".length()), tasks));
+                System.out.println(addDeadline(input.substring("deadline ".length())));
             } else if (input.startsWith("event ")) {
-                System.out.println(addEvent(input.substring("event ".length()), tasks));
+                System.out.println(addEvent(input.substring("event ".length())));
             } else {
                 try {
                     throw new UnknownCommandException();
@@ -100,7 +100,7 @@ public class RubberDuke {
         System.out.println(FAREWELL);
     }
 
-    private String mark(List<Task> tasks, String number) {
+    private String mark(String number) {
         StringBuilder output = new StringBuilder();
         try {
             Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
@@ -114,7 +114,7 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private String unmark(List<Task> tasks, String number) {
+    private String unmark(String number) {
         StringBuilder output = new StringBuilder();
         try {
             Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
@@ -128,7 +128,7 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private String delete(List<Task> tasks, String number) {
+    private String delete(String number) {
         StringBuilder output = new StringBuilder();
         try {
             Task task = tasks.remove(Integer.parseInt(number.strip()) - 1);
@@ -148,21 +148,21 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private String addTodo(String description, List<Task> tasks) {
+    private String addTodo(String description) {
         StringBuilder output = new StringBuilder();
         try {
-            output.append(add(new Todo(description), tasks));
+            output.append(add(new Todo(description)));
         } catch (EmptyArgumentException e) {
             output.append(e.getMessage());
         }
         return output.toString();
     }
 
-    private String addDeadline(String argString, List<Task> tasks) {
+    private String addDeadline(String argString) {
         StringBuilder output = new StringBuilder();
         try {
             String[] args = argString.split("/by ", 2);
-            output.append(add(new Deadline(args[0], args[1]), tasks));
+            output.append(add(new Deadline(args[0], args[1])));
         } catch (EmptyArgumentException e) {
             output.append(e.getMessage());
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -173,12 +173,12 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private String addEvent(String argString, List<Task> tasks) {
+    private String addEvent(String argString) {
         StringBuilder output = new StringBuilder();
         try {
             String[] argsFrom = argString.split("/from ", 2);
             String[] argsTo = argsFrom[1].split("/to ", 2);
-            output.append(add(new Event(argsFrom[0], argsTo[0], argsTo[1]), tasks));
+            output.append(add(new Event(argsFrom[0], argsTo[0], argsTo[1])));
         } catch (EmptyArgumentException e) {
             output.append(e.getMessage());
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -189,7 +189,7 @@ public class RubberDuke {
         return output.toString();
     }
 
-    private String add(Task task, List<Task> tasks) {
+    private String add(Task task) {
         tasks.add(task);
         return new StringBuilder()
                 .append("Quack. I've added this task:\n")
@@ -202,7 +202,7 @@ public class RubberDuke {
                 .toString();
     }
 
-    private String list(List<Task> tasks) {
+    private String list() {
         StringBuilder output = new StringBuilder().append("Here are your tasks. Let's get quacking!");
         for (int i = 0; i < tasks.size(); i++) {
             output.append("\n").append(i + 1).append(". ").append(tasks.get(i));
