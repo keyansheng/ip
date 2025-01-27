@@ -92,44 +92,36 @@ public class RubberDuke {
     }
 
     private String addTodo(String description) {
-        StringBuilder output = new StringBuilder();
         try {
-            output.append(taskList.add(new Todo(description)));
+            return taskList.add(new Todo(description));
         } catch (EmptyArgumentException e) {
-            output.append(e.getMessage());
+            return e.getMessage();
         }
-        return output.toString();
     }
 
     private String addDeadline(String argString) {
-        StringBuilder output = new StringBuilder();
         try {
             String[] args = argString.split("/by ", 2);
-            output.append(taskList.add(new Deadline(args[0], args[1])));
+            return taskList.add(new Deadline(args[0], args[1]));
         } catch (EmptyArgumentException e) {
-            output.append(e.getMessage());
+            return e.getMessage();
         } catch (ArrayIndexOutOfBoundsException e) {
-            output
-                    .append("Oh quack! I don't know the deadline!\n")
-                    .append("Please specify /by followed by the deadline.");
+            return "Oh quack! I don't know the deadline!\n" +
+                   "Please specify /by followed by the deadline.";
         }
-        return output.toString();
     }
 
     private String addEvent(String argString) {
-        StringBuilder output = new StringBuilder();
         try {
             String[] argsFrom = argString.split("/from ", 2);
             String[] argsTo = argsFrom[1].split("/to ", 2);
-            output.append(taskList.add(new Event(argsFrom[0], argsTo[0], argsTo[1])));
+            return taskList.add(new Event(argsFrom[0], argsTo[0], argsTo[1]));
         } catch (EmptyArgumentException e) {
-            output.append(e.getMessage());
+            return e.getMessage();
         } catch (ArrayIndexOutOfBoundsException e) {
-            output
-                    .append("Oh quack! I don't know the start and/or end times!\n")
-                    .append("Please specify /from followed by the start time, followed by /to and the end time.");
+            return "Oh quack! I don't know the start and/or end times!\n" +
+                   "Please specify /from followed by the start time, followed by /to and the end time.";
         }
-        return output.toString();
     }
 
     public static void main(String[] args) {
