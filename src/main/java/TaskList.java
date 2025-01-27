@@ -6,15 +6,9 @@ public class TaskList {
 
     public String add(Task task) {
         tasks.add(task);
-        return new StringBuilder()
-                .append("Quack. I've added this task:\n")
-                .append(task)
-                .append("\nNow you have ")
-                .append(tasks.size())
-                .append(" task")
-                .append(tasks.size() == 1 ? "" : "s")
-                .append(" in the list.")
-                .toString();
+        return "Quack. I've added this task:\n"
+               + task + "\n"
+               + "Now you have " + tasks.size() + " task" + (tasks.size() == 1 ? "" : "s") + " in the list.";
     }
 
     public String list() {
@@ -38,50 +32,39 @@ public class TaskList {
     }
 
     public String delete(String number) {
-        StringBuilder output = new StringBuilder();
         try {
             Task task = tasks.remove(Integer.parseInt(number.strip()) - 1);
-            output
-                    .append("Quack. I've removed this task:\n")
-                    .append(task)
-                    .append("\nNow you have ")
-                    .append(tasks.size())
-                    .append(" task")
-                    .append(tasks.size() == 1 ? "" : "s")
-                    .append(" in the list.");
+            return "Quack. I've removed this task:\n"
+                   + task + "\n" +
+                   "Now you have " + tasks.size() + " task" + (tasks.size() == 1 ? "" : "s") + " in the list.";
         } catch (NumberFormatException e) {
-            output.append("Oh quack! I can't read this number! Please specify the task number.");
+            return "Oh quack! I can't read this number! Please specify the task number.";
         } catch (IndexOutOfBoundsException e) {
-            output.append("Oh quack! I can't find this task! Please check the task number.");
+            return "Oh quack! I can't find this task! Please check the task number.";
         }
-        return output.toString();
     }
 
     public String mark(String number) {
-        StringBuilder output = new StringBuilder();
         try {
             Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
             task.mark();
-            output.append("Quack! I've marked this task as done:\n").append(task);
+            return "Quack! I've marked this task as done:\n" + task;
         } catch (NumberFormatException e) {
-            output.append("Oh quack! I can't read this number! Please specify the task number.");
+            return "Oh quack! I can't read this number! Please specify the task number.";
         } catch (IndexOutOfBoundsException e) {
-            output.append("Oh quack! I can't find this task! Please check the task number.");
+            return "Oh quack! I can't find this task! Please check the task number.";
         }
-        return output.toString();
     }
 
     public String unmark(String number) {
-        StringBuilder output = new StringBuilder();
         try {
             Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
             task.unmark();
-            output.append("Quack, I've marked this task as not done yet:\n").append(task);
+            return "Quack, I've marked this task as not done yet:\n" + task;
         } catch (NumberFormatException e) {
-            output.append("Oh quack! I can't read this number! Please specify the task number.");
+            return "Oh quack! I can't read this number! Please specify the task number.";
         } catch (IndexOutOfBoundsException e) {
-            output.append("Oh quack! I can't find this task! Please check the task number.");
+            return "Oh quack! I can't find this task! Please check the task number.";
         }
-        return output.toString();
     }
 }
