@@ -72,11 +72,7 @@ public class RubberDuke {
                 } else if (input.startsWith("event ")) {
                     System.out.println(addEvent(input.substring("event ".length())));
                 } else {
-                    try {
-                        throw new UnknownCommandException();
-                    } catch (UnknownCommandException e) {
-                        System.out.println(e.getMessage());
-                    }
+                    throw new UserException("Quack! I don't know what you're talking about!");
                 }
             } catch (UserException e) {
                 System.out.println(e.getMessage());
