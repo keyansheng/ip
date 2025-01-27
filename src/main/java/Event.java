@@ -10,10 +10,10 @@ public class Event extends Task {
     public Event(String description, String from, String to) throws EmptyArgumentException {
         super(description);
         if ((from = from.strip()).isEmpty()) {
-            throw new EmptyArgumentException("Quack! I don't know when the deadline is!");
+            throw new EmptyArgumentException("Quack! I don't know when the event starts!");
         }
         if ((to = to.strip()).isEmpty()) {
-            throw new EmptyArgumentException("Quack! I don't know when the deadline is!");
+            throw new EmptyArgumentException("Quack! I don't know when the event ends!");
         }
         this.from = from;
         this.to = to;
