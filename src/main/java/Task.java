@@ -2,9 +2,9 @@ public abstract class Task {
     private String description;
     private boolean isDone = false;
 
-    public Task(String description) throws EmptyArgumentException {
+    public Task(String description) throws UserException {
         if ((description = description.strip()).isEmpty()) {
-            throw new EmptyArgumentException("Quack! I don't know what this task is about!");
+            throw new UserException("Quack! I don't know what this task is about!");
         }
         this.description = description;
     }

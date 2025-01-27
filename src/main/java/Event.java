@@ -7,13 +7,13 @@ public class Event extends Task {
     private String from;
     private String to;
 
-    public Event(String description, String from, String to) throws EmptyArgumentException {
+    public Event(String description, String from, String to) throws UserException {
         super(description);
         if ((from = from.strip()).isEmpty()) {
-            throw new EmptyArgumentException("Quack! I don't know when the event starts!");
+            throw new UserException("Quack! I don't know when the event starts!");
         }
         if ((to = to.strip()).isEmpty()) {
-            throw new EmptyArgumentException("Quack! I don't know when the event ends!");
+            throw new UserException("Quack! I don't know when the event ends!");
         }
         this.from = from;
         this.to = to;

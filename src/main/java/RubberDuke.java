@@ -35,14 +35,18 @@ public class RubberDuke {
         }
         while (fileScanner.hasNextLine()) {
             String input = fileScanner.nextLine();
-            if (input.startsWith("mark ")) {
-                taskList.mark(input.substring("mark ".length()));
-            } else if (input.startsWith("todo ")) {
-                addTodo(input.substring("todo ".length()));
-            } else if (input.startsWith("deadline ")) {
-                addDeadline(input.substring("deadline ".length()));
-            } else if (input.startsWith("event ")) {
-                addEvent(input.substring("event ".length()));
+            try {
+                if (input.startsWith("mark ")) {
+                    taskList.mark(input.substring("mark ".length()));
+                } else if (input.startsWith("todo ")) {
+                    addTodo(input.substring("todo ".length()));
+                } else if (input.startsWith("deadline ")) {
+                    addDeadline(input.substring("deadline ".length()));
+                } else if (input.startsWith("event ")) {
+                    addEvent(input.substring("event ".length()));
+                }
+            } catch (UserException e) {
+                System.out.println(e.getMessage());
             }
         }
         System.out.println(GREETING);
@@ -50,28 +54,32 @@ public class RubberDuke {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
-            if (input.equals("bye")) {
-                break;
-            } else if (input.equals("list")) {
-                System.out.println(taskList.list());
-            } else if (input.startsWith("mark ")) {
-                System.out.println(taskList.mark(input.substring("mark ".length())));
-            } else if (input.startsWith("unmark ")) {
-                System.out.println(taskList.unmark(input.substring("unmark ".length())));
-            } else if (input.startsWith("delete ")) {
-                System.out.println(taskList.delete(input.substring("delete ".length())));
-            } else if (input.startsWith("todo ")) {
-                System.out.println(addTodo(input.substring("todo ".length())));
-            } else if (input.startsWith("deadline ")) {
-                System.out.println(addDeadline(input.substring("deadline ".length())));
-            } else if (input.startsWith("event ")) {
-                System.out.println(addEvent(input.substring("event ".length())));
-            } else {
-                try {
-                    throw new UnknownCommandException();
-                } catch (UnknownCommandException e) {
-                    System.out.println(e.getMessage());
+            try {
+                if (input.equals("bye")) {
+                    break;
+                } else if (input.equals("list")) {
+                    System.out.println(taskList.list());
+                } else if (input.startsWith("mark ")) {
+                    System.out.println(taskList.mark(input.substring("mark ".length())));
+                } else if (input.startsWith("unmark ")) {
+                    System.out.println(taskList.unmark(input.substring("unmark ".length())));
+                } else if (input.startsWith("delete ")) {
+                    System.out.println(taskList.delete(input.substring("delete ".length())));
+                } else if (input.startsWith("todo ")) {
+                    System.out.println(addTodo(input.substring("todo ".length())));
+                } else if (input.startsWith("deadline ")) {
+                    System.out.println(addDeadline(input.substring("deadline ".length())));
+                } else if (input.startsWith("event ")) {
+                    System.out.println(addEvent(input.substring("event ".length())));
+                } else {
+                    try {
+                        throw new UnknownCommandException();
+                    } catch (UnknownCommandException e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
+            } catch (UserException e) {
+                System.out.println(e.getMessage());
             }
             System.out.print(PROMPT);
         }
@@ -91,33 +99,25 @@ public class RubberDuke {
         System.out.println(FAREWELL);
     }
 
-    private String addTodo(String description) {
-        try {
-            return taskList.add(new Todo(description));
-        } catch (EmptyArgumentException e) {
-            return e.getMessage();
-        }
+    private String addTodo(String description) throws UserException {
+        return taskList.add(new Todo(description));
     }
 
-    private String addDeadline(String argString) {
+    private String addDeadline(String argString) throws UserException {
         try {
             String[] args = argString.split("/by ", 2);
             return taskList.add(new Deadline(args[0], args[1]));
-        } catch (EmptyArgumentException e) {
-            return e.getMessage();
         } catch (ArrayIndexOutOfBoundsException e) {
             return "Oh quack! I don't know the deadline!\n" +
                    "Please specify /by followed by the deadline.";
         }
     }
 
-    private String addEvent(String argString) {
+    private String addEvent(String argString) throws UserException {
         try {
             String[] argsFrom = argString.split("/from ", 2);
             String[] argsTo = argsFrom[1].split("/to ", 2);
             return taskList.add(new Event(argsFrom[0], argsTo[0], argsTo[1]));
-        } catch (EmptyArgumentException e) {
-            return e.getMessage();
         } catch (ArrayIndexOutOfBoundsException e) {
             return "Oh quack! I don't know the start and/or end times!\n" +
                    "Please specify /from followed by the start time, followed by /to and the end time.";

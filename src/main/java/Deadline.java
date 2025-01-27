@@ -6,10 +6,10 @@ import java.time.format.FormatStyle;
 public class Deadline extends Task {
     private String by;
 
-    public Deadline(String description, String by) throws EmptyArgumentException {
+    public Deadline(String description, String by) throws UserException {
         super(description);
         if ((by = by.strip()).isEmpty()) {
-            throw new EmptyArgumentException("Quack! I don't know when the deadline is!");
+            throw new UserException("Quack! I don't know when the deadline is!");
         }
         this.by = by;
     }
