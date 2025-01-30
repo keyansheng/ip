@@ -41,7 +41,7 @@ public class RubberDuke {
                 } else if (input.startsWith("todo ")) {
                     addTodo(input.substring("todo ".length()));
                 } else if (input.startsWith("deadline ")) {
-                    addDeadline(input.substring("deadline ".length()));
+                    taskList.add(Deadline.of(input.substring("deadline ".length())));
                 } else if (input.startsWith("event ")) {
                     addEvent(input.substring("event ".length()));
                 }
@@ -68,7 +68,7 @@ public class RubberDuke {
                 } else if (input.startsWith("todo ")) {
                     System.out.println(addTodo(input.substring("todo ".length())));
                 } else if (input.startsWith("deadline ")) {
-                    System.out.println(addDeadline(input.substring("deadline ".length())));
+                    System.out.println(taskList.add(Deadline.of(input.substring("deadline ".length()))));
                 } else if (input.startsWith("event ")) {
                     System.out.println(addEvent(input.substring("event ".length())));
                 } else {
@@ -97,16 +97,6 @@ public class RubberDuke {
 
     private String addTodo(String description) throws UserException {
         return taskList.add(new Todo(description));
-    }
-
-    private String addDeadline(String argString) throws UserException {
-        try {
-            String[] args = argString.split("/by ", 2);
-            return taskList.add(new Deadline(args[0], args[1]));
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return "Oh quack! I don't know the deadline!\n" +
-                   "Please specify /by followed by the deadline.";
-        }
     }
 
     private String addEvent(String argString) throws UserException {
