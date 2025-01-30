@@ -9,4 +9,8 @@ public class Ui {
     public static void showGoodbye() {
         System.out.println("Quack. Hope to see you again soon!");
     }
+
+    public static void showPrompt() {
+        System.out.print("> ");
+    }
 }

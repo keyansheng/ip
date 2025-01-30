@@ -26,7 +26,7 @@ public class RubberDuke {
         Ui.showWelcome();
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
-            System.out.print("> ");
+            Ui.showPrompt();
             String input = scanner.nextLine();
             try {
                 if (input.equals("bye")) {
