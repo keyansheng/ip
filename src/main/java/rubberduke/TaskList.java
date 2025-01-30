@@ -1,5 +1,7 @@
 package rubberduke;
 
+import rubberduke.tasks.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package rubberduke;
+package rubberduke.tasks;
+
+import rubberduke.UserException;
 
 public class Todo extends Task {
     private Todo(String description) throws UserException {

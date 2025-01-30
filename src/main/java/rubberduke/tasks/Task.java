@@ -1,4 +1,6 @@
-package rubberduke;
+package rubberduke.tasks;
+
+import rubberduke.UserException;
 
 public abstract class Task {
     private String description;
