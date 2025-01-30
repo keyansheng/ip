@@ -30,7 +30,7 @@ public class RubberDuke {
                 String fullCommand = ui.readCommand();
                 if (fullCommand.equals("bye")) {
                     ui.showGoodbye();
-                    break;
+                    isExit = true;
                 } else {
                     System.out.println(parser.parse(fullCommand));
                 }
