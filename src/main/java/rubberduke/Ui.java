@@ -1,3 +1,5 @@
+package rubberduke;
+
 import java.util.Scanner;
 
 public class Ui {

@@ -1,3 +1,5 @@
+package rubberduke;
+
 public class Todo extends Task {
     private Todo(String description) throws UserException {
         super(description);

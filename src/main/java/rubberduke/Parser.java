@@ -1,3 +1,5 @@
+package rubberduke;
+
 public class Parser {
     private final TaskList taskList;
 
