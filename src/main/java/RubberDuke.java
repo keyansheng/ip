@@ -1,11 +1,11 @@
-import java.util.Scanner;
-
 public class RubberDuke {
     private final TaskList taskList = new TaskList();
     private final Parser parser = new Parser(taskList);
     private Storage storage;
+    private Ui ui;
 
     private RubberDuke(String filePath) {
+        ui = new Ui();
         try {
             storage = new Storage(filePath);
         } catch (UserException e) {
@@ -23,19 +23,19 @@ public class RubberDuke {
     }
 
     private void run() {
-        Ui.showWelcome();
-        Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNextLine()) {
-            Ui.showPrompt();
-            String input = scanner.nextLine();
+        ui.showWelcome();
+        boolean isExit = false;
+        while (!isExit) {
             try {
-                if (input.equals("bye")) {
+                String fullCommand = ui.readCommand();
+                if (fullCommand.equals("bye")) {
+                    ui.showGoodbye();
                     break;
                 } else {
-                    System.out.println(parser.parse(input));
+                    System.out.println(parser.parse(fullCommand));
                 }
             } catch (UserException e) {
-                System.out.println(e.getMessage());
+                ui.showError(e.getMessage());
             }
         }
         String output = taskList.dump();
@@ -44,7 +44,6 @@ public class RubberDuke {
         } catch (UserException e) {
             System.out.println(e.getMessage());
         }
-        Ui.showGoodbye();
     }
 
     public static void main(String[] args) {
