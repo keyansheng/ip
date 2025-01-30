@@ -1,19 +1,12 @@
 import java.util.Scanner;
 
 public class RubberDuke {
-    private static final String FILE_PATH = "./data/tasks.txt";
-    private static final String GREETING = """
-            Quack! \
-            I'm Rubber Duke, your friendly neighbourhood rubber duck, here to help you with your debugging sessions.
-            What can I do for you?""";
-    private static final String FAREWELL = "Quack. Hope to see you again soon!";
-    private static final String PROMPT = "> ";
     private TaskList taskList = new TaskList();
 
     private RubberDuke() {
         Storage storage;
         try {
-            storage = new Storage(FILE_PATH);
+            storage = new Storage("./data/tasks.txt");
         } catch (UserException e) {
             System.out.println(e.getMessage());
             return;
@@ -27,10 +20,13 @@ public class RubberDuke {
                 System.out.printf("Oh quack! This line of the tasks file is corrupted:\n%s%n", input);
             }
         }
-        System.out.println(GREETING);
+        System.out.println("""
+                Quack! \
+                I'm Rubber Duke, your friendly neighbourhood rubber duck, here to help you with your debugging sessions.
+                What can I do for you?""");
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
-            System.out.print(PROMPT);
+            System.out.print("> ");
             String input = scanner.nextLine();
             try {
                 if (input.equals("bye")) {
@@ -48,7 +44,7 @@ public class RubberDuke {
         } catch (UserException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(FAREWELL);
+        System.out.println("Quack. Hope to see you again soon!");
     }
 
     public static void main(String[] args) {
