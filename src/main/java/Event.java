@@ -7,7 +7,7 @@ public class Event extends Task {
     private String from;
     private String to;
 
-    public Event(String description, String from, String to) throws UserException {
+    private Event(String description, String from, String to) throws UserException {
         super(description);
         if ((from = from.strip()).isEmpty()) {
             throw new UserException("Quack! I don't know when the event starts!");
@@ -17,6 +17,17 @@ public class Event extends Task {
         }
         this.from = from;
         this.to = to;
+    }
+
+    public static Event of(String command) throws UserException {
+        try {
+            String[] args = command.split("/from ", 2);
+            String[] dates = args[1].split("/to ", 2);
+            return new Event(args[0], dates[0], dates[1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new UserException("Oh quack! I don't know the start and/or end times!\n" +
+                    "Please specify /from followed by the start time, followed by /to and the end time.");
+        }
     }
 
     @Override

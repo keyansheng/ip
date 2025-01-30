@@ -43,7 +43,7 @@ public class RubberDuke {
                 } else if (input.startsWith("deadline ")) {
                     taskList.add(Deadline.of(input.substring("deadline ".length())));
                 } else if (input.startsWith("event ")) {
-                    addEvent(input.substring("event ".length()));
+                    taskList.add(Event.of(input.substring("event ".length())));
                 }
             } catch (UserException e) {
                 System.out.println(e.getMessage());
@@ -70,7 +70,7 @@ public class RubberDuke {
                 } else if (input.startsWith("deadline ")) {
                     System.out.println(taskList.add(Deadline.of(input.substring("deadline ".length()))));
                 } else if (input.startsWith("event ")) {
-                    System.out.println(addEvent(input.substring("event ".length())));
+                    System.out.println(taskList.add(Event.of(input.substring("event ".length()))));
                 } else {
                     throw new UserException("Quack! I don't know what you're talking about!");
                 }
@@ -97,17 +97,6 @@ public class RubberDuke {
 
     private String addTodo(String description) throws UserException {
         return taskList.add(new Todo(description));
-    }
-
-    private String addEvent(String argString) throws UserException {
-        try {
-            String[] argsFrom = argString.split("/from ", 2);
-            String[] argsTo = argsFrom[1].split("/to ", 2);
-            return taskList.add(new Event(argsFrom[0], argsTo[0], argsTo[1]));
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return "Oh quack! I don't know the start and/or end times!\n" +
-                   "Please specify /from followed by the start time, followed by /to and the end time.";
-        }
     }
 
     public static void main(String[] args) {
