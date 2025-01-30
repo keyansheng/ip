@@ -1,17 +1,17 @@
 import java.util.Scanner;
 
 public class RubberDuke {
-    private TaskList taskList = new TaskList();
+    private final TaskList taskList = new TaskList();
+    private final Parser parser = new Parser(taskList);
+    private Storage storage;
 
-    private RubberDuke() {
-        Storage storage;
+    private RubberDuke(String filePath) {
         try {
-            storage = new Storage("./data/tasks.txt");
+            storage = new Storage(filePath);
         } catch (UserException e) {
             System.out.println(e.getMessage());
             return;
         }
-        Parser parser = new Parser(taskList);
         while (storage.scanner.hasNextLine()) {
             String input = storage.scanner.nextLine();
             try {
@@ -20,6 +20,9 @@ public class RubberDuke {
                 System.out.printf("Oh quack! This line of the tasks file is corrupted:\n%s%n", input);
             }
         }
+    }
+
+    private void run() {
         Ui.showWelcome();
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
@@ -45,6 +48,6 @@ public class RubberDuke {
     }
 
     public static void main(String[] args) {
-        new RubberDuke();
+        new RubberDuke("./data/tasks.txt").run();
     }
 }
