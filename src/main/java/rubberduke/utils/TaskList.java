@@ -1,3 +1,7 @@
+package rubberduke.utils;
+
+import rubberduke.tasks.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,7 @@
+package rubberduke.tasks;
+
+import rubberduke.UserException;
+
 public abstract class Task {
     private String description;
     private boolean isDone = false;

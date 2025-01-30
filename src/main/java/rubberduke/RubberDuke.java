@@ -1,3 +1,10 @@
+package rubberduke;
+
+import rubberduke.utils.Parser;
+import rubberduke.utils.Storage;
+import rubberduke.utils.TaskList;
+import rubberduke.utils.Ui;
+
 public class RubberDuke {
     private final TaskList taskList = new TaskList();
     private final Parser parser = new Parser(taskList);

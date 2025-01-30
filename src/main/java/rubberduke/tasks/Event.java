@@ -1,3 +1,7 @@
+package rubberduke.tasks;
+
+import rubberduke.UserException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
