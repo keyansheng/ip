@@ -23,8 +23,8 @@ public class Deadline extends Task {
             String[] args = command.split("/by ", 2);
             return new Deadline(args[0], args[1]);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new UserException("Oh quack! I don't know the deadline!\n" +
-                    "Please specify /by followed by the deadline.");
+            throw new UserException("Oh quack! I don't know the deadline!\n"
+                                    + "Please specify /by followed by the deadline.");
         }
     }
 

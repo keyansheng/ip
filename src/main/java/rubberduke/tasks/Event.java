@@ -29,8 +29,9 @@ public class Event extends Task {
             String[] dates = args[1].split("/to ", 2);
             return new Event(args[0], dates[0], dates[1]);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new UserException("Oh quack! I don't know the start and/or end times!\n" +
-                    "Please specify /from followed by the start time, followed by /to and the end time.");
+            throw new UserException(
+                    "Oh quack! I don't know the start and/or end times!\n"
+                    + "Please specify /from followed by the start time, followed by /to and the end time.");
         }
     }
 
