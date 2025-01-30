@@ -1,4 +1,4 @@
-package rubberduke;
+package rubberduke.utils;
 
 import rubberduke.tasks.Task;
 

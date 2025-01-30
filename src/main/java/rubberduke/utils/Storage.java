@@ -1,4 +1,6 @@
-package rubberduke;
+package rubberduke.utils;
+
+import rubberduke.UserException;
 
 import java.io.File;
 import java.io.FileNotFoundException;

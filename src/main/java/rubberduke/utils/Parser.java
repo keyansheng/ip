@@ -1,5 +1,6 @@
-package rubberduke;
+package rubberduke.utils;
 
+import rubberduke.UserException;
 import rubberduke.tasks.Deadline;
 import rubberduke.tasks.Event;
 import rubberduke.tasks.Todo;
