@@ -18,20 +18,13 @@ public class RubberDuke {
             System.out.println(e.getMessage());
             return;
         }
+        Parser parser = new Parser(taskList);
         while (storage.scanner.hasNextLine()) {
             String input = storage.scanner.nextLine();
             try {
-                if (input.startsWith("mark ")) {
-                    taskList.mark(input.substring("mark ".length()));
-                } else if (input.startsWith("todo ")) {
-                    taskList.add(Todo.of(input.substring("todo ".length())));
-                } else if (input.startsWith("deadline ")) {
-                    taskList.add(Deadline.of(input.substring("deadline ".length())));
-                } else if (input.startsWith("event ")) {
-                    taskList.add(Event.of(input.substring("event ".length())));
-                }
+                parser.parse(input);
             } catch (UserException e) {
-                System.out.println(e.getMessage());
+                System.out.printf("Oh quack! This line of the tasks file is corrupted:\n%s%n", input);
             }
         }
         System.out.println(GREETING);
@@ -42,22 +35,8 @@ public class RubberDuke {
             try {
                 if (input.equals("bye")) {
                     break;
-                } else if (input.equals("list")) {
-                    System.out.println(taskList.list());
-                } else if (input.startsWith("mark ")) {
-                    System.out.println(taskList.mark(input.substring("mark ".length())));
-                } else if (input.startsWith("unmark ")) {
-                    System.out.println(taskList.unmark(input.substring("unmark ".length())));
-                } else if (input.startsWith("delete ")) {
-                    System.out.println(taskList.delete(input.substring("delete ".length())));
-                } else if (input.startsWith("todo ")) {
-                    System.out.println(taskList.add(Todo.of(input.substring("todo ".length()))));
-                } else if (input.startsWith("deadline ")) {
-                    System.out.println(taskList.add(Deadline.of(input.substring("deadline ".length()))));
-                } else if (input.startsWith("event ")) {
-                    System.out.println(taskList.add(Event.of(input.substring("event ".length()))));
                 } else {
-                    throw new UserException("Quack! I don't know what you're talking about!");
+                    System.out.println(parser.parse(input));
                 }
             } catch (UserException e) {
                 System.out.println(e.getMessage());
