@@ -30,6 +30,8 @@ public class Parser {
                 return taskList.mark(args[1]);
             case "unmark":
                 return taskList.unmark(args[1]);
+            case "find":
+                return taskList.find(args[1]);
             default:
                 throw new UserException("Quack! I don't know what you're talking about!");
             }

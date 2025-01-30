@@ -23,6 +23,17 @@ public class TaskList {
         return output.toString();
     }
 
+    public String find(String query) {
+        StringBuilder output = new StringBuilder().append("Quack. Here are the matching tasks in your list:");
+        int i = 1;
+        for (Task task : tasks) {
+            if (task.getDescription().contains(query)) {
+                output.append("\n").append(i++).append(". ").append(task);
+            }
+        }
+        return output.toString();
+    }
+
     public String dump() {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
