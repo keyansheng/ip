@@ -1,11 +1,15 @@
 public class Todo extends Task {
-    public Todo(String description) {
+    private Todo(String description) throws UserException {
         super(description);
+    }
+
+    public static Todo of(String command) throws UserException {
+        return new Todo(command);
     }
 
     @Override
     public String getCreateCommand() {
-        return "todo %s".formatted(super.getCreateCommand());
+        return "todo %s".formatted(getDescription());
     }
 
     @Override
