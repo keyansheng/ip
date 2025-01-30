@@ -20,10 +20,7 @@ public class RubberDuke {
                 System.out.printf("Oh quack! This line of the tasks file is corrupted:\n%s%n", input);
             }
         }
-        System.out.println("""
-                Quack! \
-                I'm Rubber Duke, your friendly neighbourhood rubber duck, here to help you with your debugging sessions.
-                What can I do for you?""");
+        Ui.showWelcome();
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             System.out.print("> ");
@@ -44,7 +41,7 @@ public class RubberDuke {
         } catch (UserException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Quack. Hope to see you again soon!");
+        Ui.showGoodbye();
     }
 
     public static void main(String[] args) {
