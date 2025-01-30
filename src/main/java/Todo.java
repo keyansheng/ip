@@ -5,7 +5,7 @@ public class Todo extends Task {
 
     @Override
     public String getCreateCommand() {
-        return "todo %s".formatted(super.getCreateCommand());
+        return "todo %s".formatted(getDescription());
     }
 
     @Override

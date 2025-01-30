@@ -16,7 +16,7 @@ public class Deadline extends Task {
 
     @Override
     public String getCreateCommand() {
-        return "deadline %s /by %s".formatted(super.getCreateCommand(), by);
+        return "deadline %s /by %s".formatted(getDescription(), by);
     }
 
     @Override
