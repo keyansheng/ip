@@ -28,9 +28,9 @@ public class RubberDuke {
             }
         }
         System.out.println(GREETING);
-        System.out.print(PROMPT);
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
+            System.out.print(PROMPT);
             String input = scanner.nextLine();
             try {
                 if (input.equals("bye")) {
@@ -41,7 +41,6 @@ public class RubberDuke {
             } catch (UserException e) {
                 System.out.println(e.getMessage());
             }
-            System.out.print(PROMPT);
         }
         String output = taskList.dump();
         try {
