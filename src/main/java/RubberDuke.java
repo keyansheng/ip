@@ -1,7 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class RubberDuke {
@@ -15,26 +11,15 @@ public class RubberDuke {
     private TaskList taskList = new TaskList();
 
     private RubberDuke() {
-        File file = new File(FILE_PATH);
-        File directory = file.getParentFile();
-        Scanner fileScanner;
+        Storage storage;
         try {
-            if (!directory.exists()) {
-                directory.mkdirs();
-            }
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            fileScanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            System.out.printf("Oh quack! I can't find the tasks file! Is there a file at %s?%n", file.getPath());
-            return;
-        } catch (IOException e) {
-            System.out.printf("Oh quack! I can't create the tasks file! Is %s writable?%n", file.getParent());
+            storage = new Storage(FILE_PATH);
+        } catch (UserException e) {
+            System.out.println(e.getMessage());
             return;
         }
-        while (fileScanner.hasNextLine()) {
-            String input = fileScanner.nextLine();
+        while (storage.scanner.hasNextLine()) {
+            String input = storage.scanner.nextLine();
             try {
                 if (input.startsWith("mark ")) {
                     taskList.mark(input.substring("mark ".length()));
@@ -81,16 +66,9 @@ public class RubberDuke {
         }
         String output = taskList.dump();
         try {
-            FileWriter fileWriter = new FileWriter(FILE_PATH);
-            fileWriter.write(output);
-            fileWriter.close();
-        } catch (IOException e) {
-            System.out.printf("""
-                    Oh quack! I can't write to the tasks file! Is %s writable?
-                    Please save the following commands and enter them next time.
-                    """, file.getParent());
-            System.out.print(output);
-            return;
+            storage.write(output);
+        } catch (UserException e) {
+            System.out.println(e.getMessage());
         }
         System.out.println(FAREWELL);
     }
