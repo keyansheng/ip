@@ -39,7 +39,7 @@ public class RubberDuke {
                 if (input.startsWith("mark ")) {
                     taskList.mark(input.substring("mark ".length()));
                 } else if (input.startsWith("todo ")) {
-                    addTodo(input.substring("todo ".length()));
+                    taskList.add(Todo.of(input.substring("todo ".length())));
                 } else if (input.startsWith("deadline ")) {
                     taskList.add(Deadline.of(input.substring("deadline ".length())));
                 } else if (input.startsWith("event ")) {
@@ -66,7 +66,7 @@ public class RubberDuke {
                 } else if (input.startsWith("delete ")) {
                     System.out.println(taskList.delete(input.substring("delete ".length())));
                 } else if (input.startsWith("todo ")) {
-                    System.out.println(addTodo(input.substring("todo ".length())));
+                    System.out.println(taskList.add(Todo.of(input.substring("todo ".length()))));
                 } else if (input.startsWith("deadline ")) {
                     System.out.println(taskList.add(Deadline.of(input.substring("deadline ".length()))));
                 } else if (input.startsWith("event ")) {
@@ -93,10 +93,6 @@ public class RubberDuke {
             return;
         }
         System.out.println(FAREWELL);
-    }
-
-    private String addTodo(String description) throws UserException {
-        return taskList.add(new Todo(description));
     }
 
     public static void main(String[] args) {

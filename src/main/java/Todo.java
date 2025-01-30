@@ -1,6 +1,10 @@
 public class Todo extends Task {
-    public Todo(String description) throws UserException {
+    private Todo(String description) throws UserException {
         super(description);
+    }
+
+    public static Todo of(String command) throws UserException {
+        return new Todo(command);
     }
 
     @Override
