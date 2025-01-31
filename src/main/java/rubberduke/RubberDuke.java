@@ -8,11 +8,10 @@ import rubberduke.utils.Ui;
 public class RubberDuke {
     private final TaskList taskList = new TaskList();
     private final Parser parser = new Parser(taskList);
+    private final Ui ui = new Ui();
     private Storage storage;
-    private Ui ui;
 
     private RubberDuke(String filePath) {
-        ui = new Ui();
         try {
             storage = new Storage(filePath);
         } catch (UserException e) {
