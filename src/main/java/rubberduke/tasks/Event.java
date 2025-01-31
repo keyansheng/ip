@@ -8,6 +8,7 @@ import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 
 public class Event extends Task {
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     private String from;
     private String to;
 
@@ -44,13 +45,13 @@ public class Event extends Task {
     public String toString() {
         String from;
         try {
-            from = LocalDateTime.parse(this.from).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+            from = LocalDateTime.parse(this.from).format(FORMATTER);
         } catch (DateTimeParseException e) {
             from = this.from;
         }
         String to;
         try {
-            to = LocalDateTime.parse(this.to).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+            to = LocalDateTime.parse(this.to).format(FORMATTER);
         } catch (DateTimeParseException e) {
             to = this.to;
         }

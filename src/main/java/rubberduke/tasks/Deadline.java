@@ -8,6 +8,7 @@ import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 
 public class Deadline extends Task {
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     private String by;
 
     private Deadline(String description, String by) throws UserException {
@@ -37,7 +38,7 @@ public class Deadline extends Task {
     public String toString() {
         String by;
         try {
-            by = LocalDateTime.parse(this.by).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
+            by = LocalDateTime.parse(this.by).format(FORMATTER);
         } catch (DateTimeParseException e) {
             by = this.by;
         }
