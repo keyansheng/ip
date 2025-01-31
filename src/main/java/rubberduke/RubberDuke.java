@@ -45,21 +45,24 @@ public class RubberDuke {
         }
     }
 
+    private void processCommand(String command) {
+        try {
+            ui.show(parser.parse(command));
+        } catch (UserException e) {
+            ui.showError(e.getMessage());
+        }
+    }
+
     private void run() {
         ui.showWelcome();
         while (true) {
-            try {
-                String fullCommand = ui.readCommand();
-                if (fullCommand.equals("bye")) {
-                    ui.showGoodbye();
-                    break;
-                } else {
-                    System.out.println(parser.parse(fullCommand));
-                }
-            } catch (UserException e) {
-                ui.showError(e.getMessage());
+            String command = ui.readCommand();
+            if (command.equals("bye")) {
+                break;
             }
+            processCommand(command);
         }
+        ui.showGoodbye();
         saveTasks();
     }
 
