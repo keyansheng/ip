@@ -37,6 +37,14 @@ public class RubberDuke {
         }
     }
 
+    private void saveTasks() {
+        try {
+            storage.write(taskList.dump());
+        } catch (UserException e) {
+            ui.showError(e.getMessage());
+        }
+    }
+
     private void run() {
         ui.showWelcome();
         boolean isExit = false;
@@ -53,12 +61,7 @@ public class RubberDuke {
                 ui.showError(e.getMessage());
             }
         }
-        String output = taskList.dump();
-        try {
-            storage.write(output);
-        } catch (UserException e) {
-            System.out.println(e.getMessage());
-        }
+        saveTasks();
     }
 
     public static void main(String[] args) {
