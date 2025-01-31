@@ -18,7 +18,11 @@ public class Ui {
 
     public String readCommand() {
         System.out.print("> ");
-        return scanner.nextLine();
+        return scanner.hasNextLine() ? scanner.nextLine() : "bye";
+    }
+
+    public void show(String message) {
+        System.out.println(message);
     }
 
     public void showError(String message) {
