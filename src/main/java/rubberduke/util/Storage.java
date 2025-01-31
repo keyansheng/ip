@@ -1,4 +1,4 @@
-package rubberduke.utils;
+package rubberduke.util;
 
 import rubberduke.UserException;
 

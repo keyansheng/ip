@@ -1,9 +1,9 @@
-package rubberduke.utils;
+package rubberduke.util;
 
 import rubberduke.UserException;
-import rubberduke.tasks.Deadline;
-import rubberduke.tasks.Event;
-import rubberduke.tasks.Todo;
+import rubberduke.task.Deadline;
+import rubberduke.task.Event;
+import rubberduke.task.Todo;
 
 public class Parser {
     private final TaskList taskList;

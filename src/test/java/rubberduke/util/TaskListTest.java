@@ -1,8 +1,8 @@
-package rubberduke.utils;
+package rubberduke.util;
 
 import org.junit.jupiter.api.Test;
 import rubberduke.UserException;
-import rubberduke.tasks.Todo;
+import rubberduke.task.Todo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
