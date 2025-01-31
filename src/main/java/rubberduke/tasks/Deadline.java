@@ -29,6 +29,14 @@ public class Deadline extends Task {
         }
     }
 
+    private String formatDateTime(String dateTime) {
+        try {
+            return LocalDateTime.parse(dateTime).format(FORMATTER);
+        } catch (DateTimeParseException e) {
+            return dateTime;
+        }
+    }
+
     @Override
     public String getCreateCommand() {
         return "deadline %s /by %s".formatted(getDescription(), by);
@@ -36,12 +44,6 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        String by;
-        try {
-            by = LocalDateTime.parse(this.by).format(FORMATTER);
-        } catch (DateTimeParseException e) {
-            by = this.by;
-        }
-        return "[D] %s (by: %s)".formatted(super.toString(), by);
+        return "[D] %s (by: %s)".formatted(super.toString(), formatDateTime(by));
     }
 }
