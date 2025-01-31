@@ -45,6 +45,16 @@ public class RubberDuke {
         }
     }
 
+    private void handleInput() {
+        while (true) {
+            String command = ui.readCommand();
+            if (command.equals("bye")) {
+                break;
+            }
+            processCommand(command);
+        }
+    }
+
     private void processCommand(String command) {
         try {
             ui.show(parser.parse(command));
@@ -55,13 +65,7 @@ public class RubberDuke {
 
     private void run() {
         ui.showWelcome();
-        while (true) {
-            String command = ui.readCommand();
-            if (command.equals("bye")) {
-                break;
-            }
-            processCommand(command);
-        }
+        handleInput();
         ui.showGoodbye();
         saveTasks();
     }
