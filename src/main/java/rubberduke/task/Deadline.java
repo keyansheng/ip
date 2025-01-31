@@ -1,4 +1,4 @@
-package rubberduke.tasks;
+package rubberduke.task;
 
 import rubberduke.UserException;
 

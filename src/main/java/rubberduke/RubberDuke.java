@@ -1,9 +1,9 @@
 package rubberduke;
 
-import rubberduke.utils.Parser;
-import rubberduke.utils.Storage;
-import rubberduke.utils.TaskList;
-import rubberduke.utils.Ui;
+import rubberduke.util.Parser;
+import rubberduke.util.Storage;
+import rubberduke.util.TaskList;
+import rubberduke.util.Ui;
 
 public class RubberDuke {
     private final TaskList taskList = new TaskList();

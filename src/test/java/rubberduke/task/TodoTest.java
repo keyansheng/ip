@@ -1,4 +1,4 @@
-package rubberduke.tasks;
+package rubberduke.task;
 
 import org.junit.jupiter.api.Test;
 import rubberduke.UserException;

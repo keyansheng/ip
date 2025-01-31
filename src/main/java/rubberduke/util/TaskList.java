@@ -1,6 +1,6 @@
-package rubberduke.utils;
+package rubberduke.util;
 
-import rubberduke.tasks.Task;
+import rubberduke.task.Task;
 
 import java.util.ArrayList;
 import java.util.List;
