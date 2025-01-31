@@ -47,13 +47,12 @@ public class RubberDuke {
 
     private void run() {
         ui.showWelcome();
-        boolean isExit = false;
-        while (!isExit) {
+        while (true) {
             try {
                 String fullCommand = ui.readCommand();
                 if (fullCommand.equals("bye")) {
                     ui.showGoodbye();
-                    isExit = true;
+                    break;
                 } else {
                     System.out.println(parser.parse(fullCommand));
                 }
