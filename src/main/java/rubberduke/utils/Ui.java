@@ -21,6 +21,10 @@ public class Ui {
         return scanner.hasNextLine() ? scanner.nextLine() : "bye";
     }
 
+    public void show(String message) {
+        System.out.println(message);
+    }
+
     public void showError(String message) {
         System.out.println(message);
     }
