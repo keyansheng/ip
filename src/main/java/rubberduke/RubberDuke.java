@@ -12,12 +12,7 @@ public class RubberDuke {
     private Storage storage;
 
     private RubberDuke(String filePath) {
-        try {
-            storage = new Storage(filePath);
-        } catch (UserException e) {
-            System.out.println(e.getMessage());
-            return;
-        }
+        storage = initializeStorage(filePath);
         while (storage.scanner.hasNextLine()) {
             String input = storage.scanner.nextLine();
             try {
@@ -25,6 +20,16 @@ public class RubberDuke {
             } catch (UserException e) {
                 System.out.printf("Oh quack! This line of the tasks file is corrupted:\n%s%n", input);
             }
+        }
+    }
+
+    private Storage initializeStorage(String filePath) {
+        try {
+            return new Storage(filePath);
+        } catch (UserException e) {
+            ui.showError(e.getMessage());
+            System.exit(1);
+            return null;
         }
     }
 
