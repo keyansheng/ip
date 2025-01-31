@@ -9,7 +9,7 @@ public class RubberDuke {
     private final TaskList taskList = new TaskList();
     private final Parser parser = new Parser(taskList);
     private final Ui ui = new Ui();
-    private Storage storage;
+    private final Storage storage;
 
     private RubberDuke(String filePath) {
         storage = initializeStorage(filePath);
