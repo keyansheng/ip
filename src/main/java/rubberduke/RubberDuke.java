@@ -29,11 +29,15 @@ public class RubberDuke {
     private void loadTasks() {
         while (storage.scanner.hasNextLine()) {
             String input = storage.scanner.nextLine();
-            try {
-                parser.parse(input);
-            } catch (UserException e) {
-                ui.showError("Oh quack! This line of the tasks file is corrupted:\n" + input);
-            }
+            processFileCommand(input);
+        }
+    }
+
+    private void processFileCommand(String input) {
+        try {
+            parser.parse(input);
+        } catch (UserException e) {
+            ui.showError("Oh quack! This line of the tasks file is corrupted:\n" + input);
         }
     }
 
