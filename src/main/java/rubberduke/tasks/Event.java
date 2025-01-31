@@ -8,6 +8,7 @@ import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 
 public class Event extends Task {
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     private String from;
     private String to;
 
@@ -35,6 +36,14 @@ public class Event extends Task {
         }
     }
 
+    private String formatDateTime(String dateTime) {
+        try {
+            return LocalDateTime.parse(dateTime).format(FORMATTER);
+        } catch (DateTimeParseException e) {
+            return dateTime;
+        }
+    }
+
     @Override
     public String getCreateCommand() {
         return "event %s /from %s /to %s".formatted(getDescription(), from, to);
@@ -42,18 +51,6 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        String from;
-        try {
-            from = LocalDateTime.parse(this.from).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
-        } catch (DateTimeParseException e) {
-            from = this.from;
-        }
-        String to;
-        try {
-            to = LocalDateTime.parse(this.to).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
-        } catch (DateTimeParseException e) {
-            to = this.to;
-        }
-        return "[E] %s (from: %s to: %s)".formatted(super.toString(), from, to);
+        return "[E] %s (from: %s to: %s)".formatted(super.toString(), formatDateTime(from), formatDateTime(to));
     }
 }
