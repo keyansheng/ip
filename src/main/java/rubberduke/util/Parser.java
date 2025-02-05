@@ -5,6 +5,9 @@ import rubberduke.task.Deadline;
 import rubberduke.task.Event;
 import rubberduke.task.Todo;
 
+/**
+ * Represents a parser with a task list.
+ */
 public class Parser {
     private final TaskList taskList;
 
@@ -12,6 +15,13 @@ public class Parser {
         this.taskList = taskList;
     }
 
+    /**
+     * Parses a command string and executes the corresponding action.
+     *
+     * @param command entered by the user.
+     * @return output string returned by the action.
+     * @throws UserException if command is invalid.
+     */
     public String parse(String command) throws UserException {
         String[] args = command.split(" +", 2);
         try {
