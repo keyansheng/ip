@@ -5,6 +5,9 @@ import rubberduke.util.Storage;
 import rubberduke.util.TaskList;
 import rubberduke.util.Ui;
 
+/**
+ * Represents a Rubber Duke instance attached to a tasks file.
+ */
 public class RubberDuke {
     private final TaskList taskList = new TaskList();
     private final Parser parser = new Parser(taskList);

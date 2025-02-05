@@ -7,6 +7,9 @@ import java.time.format.FormatStyle;
 
 import rubberduke.UserException;
 
+/**
+ * Represents an event task, which has start and end dates.
+ */
 public class Event extends Task {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     private String from;
@@ -24,6 +27,13 @@ public class Event extends Task {
         this.to = to;
     }
 
+    /**
+     * Parses a command and creates an event task.
+     *
+     * @param command containing a description, start date and end date.
+     * @return an Event Object.
+     * @throws UserException if description, start date or end date is invalid.
+     */
     public static Event of(String command) throws UserException {
         try {
             String[] args = command.split("/from ", 2);

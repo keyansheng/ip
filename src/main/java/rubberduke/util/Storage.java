@@ -8,10 +8,19 @@ import java.util.Scanner;
 
 import rubberduke.UserException;
 
+/**
+ * Represents storage of tasks in a tasks file.
+ */
 public class Storage {
     public final Scanner scanner;
     private final String path;
 
+    /**
+     * Loads the tasks file into a scanner.
+     *
+     * @param path to a tasks file.
+     * @throws UserException if the tasks file cannot be created or found.
+     */
     public Storage(String path) throws UserException {
         this.path = path;
         File file = new File(path);
@@ -32,6 +41,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Writes output to the tasks file.
+     *
+     * @param output to be written to the tasks file.
+     * @throws UserException if the tasks file cannot be written to.
+     */
     public void write(String output) throws UserException {
         try {
             FileWriter fileWriter = new FileWriter(path);
