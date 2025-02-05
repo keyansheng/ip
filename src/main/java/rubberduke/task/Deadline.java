@@ -7,6 +7,9 @@ import java.time.format.FormatStyle;
 
 import rubberduke.UserException;
 
+/**
+ * Represents a deadline, which has an end date.
+ */
 public class Deadline extends Task {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     private String by;
@@ -19,6 +22,13 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    /**
+     * Parses a command and creates a deadline task.
+     *
+     * @param command containing a description and end date.
+     * @return a Deadline object.
+     * @throws UserException if description or end date is invalid.
+     */
     public static Deadline of(String command) throws UserException {
         try {
             String[] args = command.split("/by ", 2);

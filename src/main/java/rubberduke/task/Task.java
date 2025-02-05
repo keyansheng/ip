@@ -2,6 +2,9 @@ package rubberduke.task;
 
 import rubberduke.UserException;
 
+/**
+ * Represents a task, which has a description and can be done or not done.
+ */
 public abstract class Task {
     private String description;
     private boolean isDone = false;
