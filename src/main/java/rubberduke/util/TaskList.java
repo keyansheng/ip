@@ -1,9 +1,9 @@
 package rubberduke.util;
 
-import rubberduke.task.Task;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import rubberduke.task.Task;
 
 public class TaskList {
     private List<Task> tasks = new ArrayList<>();

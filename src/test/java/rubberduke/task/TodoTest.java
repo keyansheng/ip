@@ -1,9 +1,10 @@
 package rubberduke.task;
 
-import org.junit.jupiter.api.Test;
-import rubberduke.UserException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+import rubberduke.UserException;
 
 public class TodoTest {
     @Test

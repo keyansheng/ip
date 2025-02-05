@@ -1,11 +1,11 @@
 package rubberduke.task;
 
-import rubberduke.UserException;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
+
+import rubberduke.UserException;
 
 public class Event extends Task {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
