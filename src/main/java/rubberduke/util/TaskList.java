@@ -1,9 +1,9 @@
 package rubberduke.util;
 
-import rubberduke.task.Task;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import rubberduke.task.Task;
 
 public class TaskList {
     private List<Task> tasks = new ArrayList<>();
@@ -50,8 +50,8 @@ public class TaskList {
         try {
             Task task = tasks.remove(Integer.parseInt(number.strip()) - 1);
             return "Quack. I've removed this task:\n"
-                   + task + "\n" +
-                   "Now you have " + tasks.size() + " task" + (tasks.size() == 1 ? "" : "s") + " in the list.";
+                    + task + "\n"
+                    + "Now you have " + tasks.size() + " task" + (tasks.size() == 1 ? "" : "s") + " in the list.";
         } catch (NumberFormatException e) {
             return "Oh quack! I can't read this number! Please specify the task number.";
         } catch (IndexOutOfBoundsException e) {
