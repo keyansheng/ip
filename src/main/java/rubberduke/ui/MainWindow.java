@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import rubberduke.RubberDuke;
+import rubberduke.UserException;
 
 public class MainWindow extends AnchorPane {
     @FXML
@@ -36,7 +37,12 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        String response = "NOT IMPLEMENTED";
+        String response;
+        try {
+            response = rubberDuke.getResponse(input);
+        } catch (UserException e) {
+            response = e.getMessage();
+        }
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getRubberDukeDialog(response, rubberDukeImage)
