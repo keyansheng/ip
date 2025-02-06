@@ -68,10 +68,14 @@ public class RubberDuke {
 
     private void processCommand(String command) {
         try {
-            ui.show(parser.parse(command));
+            ui.show(getResponse(command));
         } catch (UserException e) {
             ui.showError(e.getMessage());
         }
+    }
+
+    public String getResponse(String input) throws UserException {
+        return parser.parse(input);
     }
 
     private void run() {
