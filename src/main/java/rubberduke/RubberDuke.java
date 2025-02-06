@@ -14,7 +14,11 @@ public class RubberDuke {
     private final Ui ui = new Ui();
     private final Storage storage;
 
-    private RubberDuke(String filePath) {
+    public RubberDuke() {
+        this("./data/tasks.txt");
+    }
+
+    public RubberDuke(String filePath) {
         storage = initializeStorage(filePath);
         loadTasks();
     }
@@ -78,6 +82,6 @@ public class RubberDuke {
     }
 
     public static void main(String[] args) {
-        new RubberDuke("./data/tasks.txt").run();
+        new RubberDuke().run();
     }
 }
