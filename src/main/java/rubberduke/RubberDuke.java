@@ -3,7 +3,7 @@ package rubberduke;
 import rubberduke.util.Parser;
 import rubberduke.util.Storage;
 import rubberduke.util.TaskList;
-import rubberduke.util.Ui;
+import rubberduke.ui.Ui;
 
 /**
  * Represents a Rubber Duke instance attached to a tasks file.
@@ -14,7 +14,11 @@ public class RubberDuke {
     private final Ui ui = new Ui();
     private final Storage storage;
 
-    private RubberDuke(String filePath) {
+    public RubberDuke() {
+        this("./data/tasks.txt");
+    }
+
+    public RubberDuke(String filePath) {
         storage = initializeStorage(filePath);
         loadTasks();
     }
@@ -44,7 +48,7 @@ public class RubberDuke {
         }
     }
 
-    private void saveTasks() {
+    public void saveTasks() {
         try {
             storage.write(taskList.dump());
         } catch (UserException e) {
@@ -64,10 +68,14 @@ public class RubberDuke {
 
     private void processCommand(String command) {
         try {
-            ui.show(parser.parse(command));
+            ui.show(getResponse(command));
         } catch (UserException e) {
             ui.showError(e.getMessage());
         }
+    }
+
+    public String getResponse(String input) throws UserException {
+        return parser.parse(input);
     }
 
     private void run() {
@@ -78,6 +86,6 @@ public class RubberDuke {
     }
 
     public static void main(String[] args) {
-        new RubberDuke("./data/tasks.txt").run();
+        new RubberDuke().run();
     }
 }
