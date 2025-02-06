@@ -48,7 +48,7 @@ public class RubberDuke {
         }
     }
 
-    private void saveTasks() {
+    public void saveTasks() {
         try {
             storage.write(taskList.dump());
         } catch (UserException e) {

@@ -32,5 +32,6 @@ public class Main extends Application {
     @Override
     public void stop() {
         mainWindow.showGoodbye();
+        rubberDuke.saveTasks();
     }
 }
