@@ -29,7 +29,7 @@ test {
 }
 
 application {
-    mainClass.set("rubberduke.RubberDuke")
+    mainClass.set("rubberduke.ui.Launcher")
 }
 
 shadowJar {
