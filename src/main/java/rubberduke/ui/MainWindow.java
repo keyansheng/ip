@@ -49,4 +49,12 @@ public class MainWindow extends AnchorPane {
         );
         userInput.clear();
     }
+
+    public void showWelcome() {
+        dialogContainer.getChildren().add(DialogBox.getRubberDukeDialog(Ui.WELCOME_MESSAGE, rubberDukeImage));
+    }
+
+    public void showGoodbye() {
+        dialogContainer.getChildren().add(DialogBox.getRubberDukeDialog(Ui.GOODBYE_MESSAGE, rubberDukeImage));
+    }
 }

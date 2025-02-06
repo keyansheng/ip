@@ -11,6 +11,7 @@ import rubberduke.RubberDuke;
 
 public class Main extends Application {
     private final RubberDuke rubberDuke = new RubberDuke();
+    private MainWindow mainWindow;
 
     @Override
     public void start(Stage stage) {
@@ -19,10 +20,17 @@ public class Main extends Application {
             AnchorPane anchorPane = fxmlLoader.load();
             Scene scene = new Scene(anchorPane);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setRubberDuke(rubberDuke);
+            mainWindow = fxmlLoader.getController();
+            mainWindow.setRubberDuke(rubberDuke);
+            mainWindow.showWelcome();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void stop() {
+        mainWindow.showGoodbye();
     }
 }
