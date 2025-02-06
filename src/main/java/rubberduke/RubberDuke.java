@@ -3,7 +3,7 @@ package rubberduke;
 import rubberduke.util.Parser;
 import rubberduke.util.Storage;
 import rubberduke.util.TaskList;
-import rubberduke.util.Ui;
+import rubberduke.ui.Ui;
 
 /**
  * Represents a Rubber Duke instance attached to a tasks file.

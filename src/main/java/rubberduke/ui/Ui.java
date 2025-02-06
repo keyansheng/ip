@@ -1,4 +1,4 @@
-package rubberduke.util;
+package rubberduke.ui;
 
 import java.util.Scanner;
 
