@@ -100,6 +100,7 @@ public class TaskList {
         try {
             Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
             task.mark();
+            assert task.isDone();
             return "Quack! I've marked this task as done:\n" + task;
         } catch (NumberFormatException e) {
             return "Oh quack! I can't read this number! Please specify the task number.";
@@ -118,6 +119,7 @@ public class TaskList {
         try {
             Task task = tasks.get(Integer.parseInt(number.strip()) - 1);
             task.unmark();
+            assert !task.isDone();
             return "Quack, I've marked this task as not done yet:\n" + task;
         } catch (NumberFormatException e) {
             return "Oh quack! I can't read this number! Please specify the task number.";
