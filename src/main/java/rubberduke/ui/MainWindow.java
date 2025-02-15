@@ -10,6 +10,9 @@ import javafx.scene.layout.VBox;
 import rubberduke.RubberDuke;
 import rubberduke.UserException;
 
+/**
+ * Represents the main window, which handles interaction with the user.
+ */
 public class MainWindow extends AnchorPane {
     @FXML
     private ScrollPane scrollPane;
