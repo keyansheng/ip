@@ -1,9 +1,9 @@
 package rubberduke;
 
+import rubberduke.ui.Ui;
 import rubberduke.util.Parser;
 import rubberduke.util.Storage;
 import rubberduke.util.TaskList;
-import rubberduke.ui.Ui;
 
 /**
  * Represents a Rubber Duke instance attached to a tasks file.
