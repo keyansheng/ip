@@ -59,7 +59,7 @@ public class TaskList {
      *
      * @return string containing commands to recreate the current state of the task list.
      */
-    public String dump() {
+    public String export() {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);

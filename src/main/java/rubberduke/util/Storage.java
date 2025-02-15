@@ -24,9 +24,18 @@ public class Storage {
     public Storage(String path) throws UserException {
         this.path = path;
         File file = new File(path);
+        createTasksDirectory(file);
+        createTasksFile(file);
+        scanner = getScanner(file);
+    }
+
+    private static void createTasksDirectory(File file) {
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
         }
+    }
+
+    private void createTasksFile(File file) throws UserException {
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -34,8 +43,11 @@ public class Storage {
                 throw new UserException("Oh quack! I can't create the tasks file! Is %s writable?".formatted(path));
             }
         }
+    }
+
+    private Scanner getScanner(File file) throws UserException {
         try {
-            scanner = new Scanner(file);
+            return new Scanner(file);
         } catch (FileNotFoundException e) {
             throw new UserException("Oh quack! I can't find the tasks file! Is there a file at %s?".formatted(path));
         }
