@@ -18,6 +18,11 @@ public class RubberDuke {
         this("./data/tasks.txt");
     }
 
+    /**
+     * Represents Rubber Duke, the debugging rubber duck.
+     *
+     * @param filePath to the tasks file.
+     */
     public RubberDuke(String filePath) {
         storage = initializeStorage(filePath);
         loadTasks();
@@ -48,6 +53,9 @@ public class RubberDuke {
         }
     }
 
+    /**
+     * Saves tasks to the tasks file.
+     */
     public void saveTasks() {
         try {
             storage.write(taskList.export());

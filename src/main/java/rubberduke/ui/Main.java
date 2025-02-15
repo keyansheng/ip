@@ -9,6 +9,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import rubberduke.RubberDuke;
 
+/**
+ * Represents the entry and exit point of the program.
+ */
 public class Main extends Application {
     private final RubberDuke rubberDuke = new RubberDuke();
     private MainWindow mainWindow;
