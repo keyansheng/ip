@@ -50,7 +50,7 @@ public class RubberDuke {
 
     public void saveTasks() {
         try {
-            storage.write(taskList.dump());
+            storage.write(taskList.export());
         } catch (UserException e) {
             ui.showError(e.getMessage());
         }
