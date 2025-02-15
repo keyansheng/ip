@@ -26,20 +26,29 @@ public class Parser {
         String[] args = command.split(" +", 2);
         try {
             switch (args[0]) {
+            case "t":
             case "todo":
                 return taskList.add(Todo.of(args[1]));
+            case "d":
             case "deadline":
                 return taskList.add(Deadline.of(args[1]));
+            case "e":
             case "event":
                 return taskList.add(Event.of(args[1]));
+            case "ls":
             case "list":
                 return taskList.list();
+            case "rm":
+            case "remove":
             case "delete":
                 return taskList.delete(args[1]);
+            case "mk":
             case "mark":
                 return taskList.mark(args[1]);
+            case "um":
             case "unmark":
                 return taskList.unmark(args[1]);
+            case "fd":
             case "find":
                 return taskList.find(args[1]);
             default:
