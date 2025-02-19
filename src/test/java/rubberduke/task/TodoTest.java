@@ -8,12 +8,12 @@ import rubberduke.UserException;
 
 public class TodoTest {
     @Test
-    public void ofToStringTest() throws UserException {
-        assertEquals("[T] [ ] of toString test", Todo.of("of toString test").toString());
+    public void testOf() throws UserException {
+        assertEquals("[T] [ ] testOf", Todo.of("testOf").toString());
     }
 
     @Test
-    public void ofGetCreateCommandTest() throws UserException {
-        assertEquals("todo of getCreateCommand test", Todo.of("of getCreateCommand test").getCreateCommand());
+    public void testGetCreateCommand() throws UserException {
+        assertEquals("todo testGetCreateCommand", Todo.of("testGetCreateCommand").getCreateCommand());
     }
 }
