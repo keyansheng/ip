@@ -9,10 +9,10 @@ import rubberduke.task.Todo;
 
 public class TaskListTest {
     @Test
-    public void addTest() throws UserException {
+    public void testAdd() throws UserException {
         assertEquals("""
                 Quack. I've added this task:
-                [T] [ ] add test
-                Now you have 1 task in the list.""", new TaskList().add(Todo.of("add test")));
+                [T] [ ] testAdd
+                Now you have 1 task in the list.""", new TaskList().add(Todo.of("testAdd")));
     }
 }
