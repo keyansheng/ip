@@ -8,9 +8,9 @@ Rubber Duke is a rubber duck for debugging that also helps you manage your tasks
 
 ## Quick start
 
-1. Install Java 17 by following the instructions at https://nus-cs2103-ay2425s2.github.io/website/admin/programmingLanguages.html
+1. [Install Java 17](https://nus-cs2103-ay2425s2.github.io/website/admin/programmingLanguages.html)
 1. Download the latest [release](https://github.com/keyansheng/ip/releases)
-1. Run with the following command, where `rubberduke.jar` is the path to the release you downloaded
+1. Run the following command, where `rubberduke.jar` is the path to the release you downloaded
    ```sh
    java -jar rubberduke.jar
    ```
